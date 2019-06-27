@@ -8,6 +8,7 @@ export const environment = {
 
 export const API_URL = 'https://heroes.globalthings.net/api';
 export const API_ACCESS_KEY = '394772d23dfb455a9fc5ee31ce8ee53a';
+export const STORAGE_REQ_KEY = '394772d23dfb455a9fc5ee31ce8ee53a-storedrequests';
 
 /*
  * For easier debugging in development mode, you can import the following file

@@ -1,6 +1,5 @@
 export class Hero {
-    constructor(public username: string,
-        public password: string,
+    constructor(public name: string,
         public categoryId: number,
         public active: boolean,
         public id?: number,

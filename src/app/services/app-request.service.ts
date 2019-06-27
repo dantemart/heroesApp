@@ -21,7 +21,7 @@ export class AppRequestService {
   }
 
   private prepareHeader() {
-    this.header = new HttpHeaders({ 'Content-Type': 'application/json', 'accessKey': API_ACCESS_KEY });
+    this.header = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded', 'accessKey': API_ACCESS_KEY, 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'POST, GET, OPTIONS, PUT' });
   }
 
   private extractData(res: any) {
@@ -45,6 +45,7 @@ export class AppRequestService {
     )
       .pipe(map(this.extractData))
       .pipe(catchError(this.handleError))
+    // return this.http.get('https://jsonplaceholder.typicode.com/todos/1', { headers: this.header, params })
   }
 
   public post(endpoint: string, postObject: any): Observable<any> {
@@ -74,6 +75,14 @@ export class AppRequestService {
     )
     // .pipe(map(this.extractData))
     // .pipe(catchError(this.handleError))
+  }
+
+  public genericRequest(type: string, endpoint: string, data: any): Observable<any> {
+    let options = {
+      body: data,
+      headers: this.header
+    }
+    return this.http.request(type, endpoint, options)
   }
 
 }
